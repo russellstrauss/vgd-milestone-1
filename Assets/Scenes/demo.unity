@@ -8208,6 +8208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7688ae2a775f4c7baef8f572a0397f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationSpeed: 1.25
+  rootMovementSpeed: 1.75
+  rootTurnSpeed: 3
   buttonPressStandingSpot: {fileID: 0}
   buttonCloseEnoughForMatchDistance: 2
   buttonCloseEnoughForPressDistance: 0.1
@@ -8216,6 +8219,7 @@ MonoBehaviour:
   exitMatchTargetsAnimTime: 0
   jumpableGroundNormalMaxAngle: 45
   closeToJumpableGround: 0
+  buttonObject: {fileID: 0}
 --- !u!136 &966225180
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10233,6 +10237,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57e6787794c864677921523e8f571933, type: 3}
+--- !u!1 &1282943311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8717648844397121767, guid: cad54794e0416478ebf40bab225f861e,
+    type: 3}
+  m_PrefabInstance: {fileID: 599924519}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1284447840 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 57e6787794c864677921523e8f571933,
@@ -10823,6 +10833,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7688ae2a775f4c7baef8f572a0397f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationSpeed: 1.25
+  rootMovementSpeed: 1.75
+  rootTurnSpeed: 3
   buttonPressStandingSpot: {fileID: 2145613788}
   buttonCloseEnoughForMatchDistance: 2
   buttonCloseEnoughForPressDistance: 0.22
@@ -10831,6 +10844,7 @@ MonoBehaviour:
   exitMatchTargetsAnimTime: 0
   jumpableGroundNormalMaxAngle: 45
   closeToJumpableGround: 1
+  buttonObject: {fileID: 1282943311}
 --- !u!136 &1331787735
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13464,6 +13478,7 @@ GameObject:
   - component: {fileID: 1596431979}
   - component: {fileID: 1596431981}
   - component: {fileID: 1596431982}
+  - component: {fileID: 1596431985}
   m_Layer: 14
   m_Name: Minion_RootMotion
   m_TagString: Untagged
@@ -13564,6 +13579,18 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1596431985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596431978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87af4f46323c9441fa6808013199d8b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1596431987
 Transform:
   m_ObjectHideFlags: 0

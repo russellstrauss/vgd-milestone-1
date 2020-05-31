@@ -120,15 +120,24 @@ public class RootMotionControlScript : MonoBehaviour
 				else
 				{
 					// TODO UNCOMMENT THESE LINES FOR TARGET MATCHING
-					// Debug.Log("match to button initiated");
-					// doMatchToButtonPress = true;
+					Debug.Log("match to button initiated");
+					doMatchToButtonPress = true;
 				}
 			}
 		}
 
 		// TODO HANDLE BUTTON MATCH TARGET HERE
 
-		
+		var animState = anim.GetCurrentAnimatorStateInfo(0);
+		if (animState.IsName("MatchToButtonPress") && !anim.IsInTransition(0) && !anim.isMatchingTarget) {
+			
+			if (buttonPressStandingSpot != null) {
+				Debug.Log("Target matching correction started");
+				initalMatchTargetsAnimTime = animState.normalizedTime;
+				var t = buttonPressStandingSpot.transform;
+				anim.MatchTarget(t.position, t.rotation, AvatarTarget.Root, new MatchTargetWeightMask(new Vector3(1f, 0f, 1f), 1f), initalMatchTargetsAnimTime, exitMatchTargetsAnimTime);
+			}
+		}
 
 		anim.SetFloat("velx", inputTurn);
 		anim.SetFloat("vely", inputForward);
@@ -155,7 +164,30 @@ public class RootMotionControlScript : MonoBehaviour
 		{
 			--groundContactCount;
 		}
-
+	}
+	
+	public GameObject buttonObject;
+	private void OnAnimatorIK(int layerIndex) {
+		
+		if (anim) {
+			AnimatorStateInfo astate = anim.GetCurrentAnimatorStateInfo(0);
+			if (astate.IsName("ButtonPress")) {
+				
+				float buttonWeight = anim.GetFloat("buttonClose");
+				// Set the look target position, if one has been assigned
+				if (buttonObject != null) {
+					anim.SetLookAtWeight(buttonWeight);
+					anim.SetLookAtPosition(buttonObject.transform.position);
+					anim.SetIKPositionWeight(AvatarIKGoal.RightHand,buttonWeight);
+					anim.SetIKPosition(AvatarIKGoal.RightHand,
+					buttonObject.transform.position);
+				}
+			}
+			else { 
+				anim.SetIKPositionWeight(AvatarIKGoal.RightHand,0);
+				anim.SetLookAtWeight(0);
+			}
+		}
 	}
 
 	void OnAnimatorMove()
