@@ -12,10 +12,9 @@ using UnityEditor;
 [RequireComponent(typeof(CharacterInputController))]
 public class RootMotionControlScript : MonoBehaviour
 {
-	public float animationSpeed = 2f;
-	public float rootMovementSpeed = 1.5f;
-	public float rootTurnSpeed = 2f;
-	private float forwardSpeedLimit = 2.0f;
+	public float animationSpeed = 1.25f;
+	public float rootMovementSpeed = 1.75f;
+	public float rootTurnSpeed = 3f;
 	
 	private Animator anim;	
 	private Rigidbody rbody;
